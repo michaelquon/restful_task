@@ -9,12 +9,15 @@
 <div id="server-data">
   <h2>All the tasks:</h2>
 <ul>
+    <button (click) = "getTasksFromService()">Show all tasks</button>
   <li *ngFor = "let task of tasks">{{ task.title }} - {{ task.description }}</li>
 </ul>
 </div>
 <div id="third-task">
-<h2>The third task: </h2>
+<h2>Enter in ID: </h2>
 <ul>
-  <li>{{ OneTask.title }} - {{ OneTask.description }}</li>
+  <input type="text" name="" id="" #id>
+  <button (click) = "getOneTasksFromService(id.value)">Show one tasks</button>
+  <li>{{ OneTask['title'] }} - {{ OneTask['description'] }}</li>
 </ul>
 </div>

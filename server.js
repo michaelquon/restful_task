@@ -20,7 +20,17 @@ var TasksSchema = new mongoose.Schema({
 mongoose.model('Tasks', TasksSchema);
 var Tasks = mongoose.model('Tasks')
 
+app.get('/tasks/:id', (req, res)=>{
+    console.log("in one route")
+    Tasks.findOne({_id: req.params.id}, (err, tasks)=>{
+        if(err){
+            console.log(err);
+        }
+        res.json({message: "Success", tasks: tasks})
+    })
+})
 app.get('/tasks', (req, res)=> {
+    console.log("in all route")
     Tasks.find({}, (err, tasks)=>{
         if(err){
             console.log(err);
@@ -28,14 +38,7 @@ app.get('/tasks', (req, res)=> {
         res.json({message: "Success", tasks: tasks})
     })
 })
-app.get('/tasks/:id', (req, res)=>{
-    Tasks.find({_id: req.params.id}, (err, tasks)=>{
-        if(err){
-            console.log(err);
-        }
-        res.json({message: "Success", tasks: tasks})
-    })
-})
+
 app.post('/tasks', (req,res)=>{
     var newTasks = new Tasks(req.body)
     newTasks.save((err)=>{

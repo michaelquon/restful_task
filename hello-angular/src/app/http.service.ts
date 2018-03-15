@@ -6,10 +6,12 @@ export class HttpService {
 
   constructor(private _http: HttpClient){}
     getTasks(){
-      return this._http.get('tasks');
+      console.log("in service getting all")
+      return this._http.get('/tasks');
       }
-      getOneTasks(){
-        return this._http.get('tasks/5aa970317b35134bc0283c83')
+      getOneTasks(id){
+        console.log("in service getting one")
+        return this._http.get('/tasks/'+id)
 
       }
     }
