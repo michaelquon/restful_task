@@ -3,18 +3,51 @@
     padding: 0;
 }
 
-#server-data, #third-task{
+#server-data, #third-task, #formdata{
 
     padding: 40px;
     margin: 0 auto;
     width: 50%;
     text-align: center;
 }
-h2{
+h1{
     text-align: center;
 }
 
 li{
-    padding: 5px;
+    font-size: 25px;    
+    padding: 10px;
     list-style: none;
+}
+#dyn-div{
+    position: relative;
+    left: 0px;
+    bottom: 0px;
+    
+}
+.upd{
+    font-size: 20px;
+}
+button, input{
+    width: 125px;
+}
+#create, #updatebtn{
+    width: 140px;
+    font-size: 25px;
+}
+input{
+    width: 250px;
+    margin-top: 20px;
+}
+
+#updatebtn{
+    margin-top: 20px;
+}
+#create{
+    margin-top: 20px;
+    margin-bottom: 15px;
+}
+label{
+    font-size: 25px;
+    font-weight: 600;
 }

@@ -3,21 +3,40 @@
   <h1>
     {{ title }}
   </h1>
- 
-</div>
 
+</div>
+<div id="formdata">
+  <h1>New Task</h1>
+  <form (submit)="onSubmit()">
+    <!-- <p>{{ newTasks | json }}</p> -->
+    <label>Task Title:
+      <input type="text" name="newTasks.title" [(ngModel)]="newTasks.title" />
+    </label>
+    <label>Task Description:
+      <input type="text" name="newTasks.description" [(ngModel)]="newTasks.description" />
+    </label><br>
+    <button type="submit" id="create" class="btn btn-primary">Create Task</button>
+  </form>
+</div>
+<h1>Show All Tasks</h1>
 <div id="server-data">
-  <h2>All the tasks:</h2>
-<ul>
-    <button (click) = "getTasksFromService()">Show all tasks</button>
-  <li *ngFor = "let task of tasks">{{ task.title }} - {{ task.description }}</li>
-</ul>
+  <ul>
+    <li *ngFor="let task of tasks">{{ task.title }} - {{ task.description }}
+      <a href="/"><button style="float: left;" class="btn-danger"  (click)="onDelete(task._id)">Delete</button></a>
+      <button style="float: left;" class="btn-warning" (click)="task.newUpdate = true">Edit</button>
+      <div id="dyn-div">
+        <input class="upd" type="text" [(ngModel)]="task.title" *ngIf="task.newUpdate == true" value="{{ task.title }}">
+        <input class="upd" type="text" [(ngModel)]="task.description" *ngIf="task.newUpdate == true" value="{{ task.description }}">
+        <button style="float: right;" id="updatebtn" class="btn btn-primary" *ngIf="task.newUpdate == true" (click)="onUpdate(task._id); task.newUpdate=false ">Update</button>
+      </div>
+    </li>
+  </ul>
 </div>
-<div id="third-task">
-<h2>Enter in ID: </h2>
-<ul>
-  <input type="text" name="" id="" #id>
-  <button (click) = "getOneTasksFromService(id.value)">Show one tasks</button>
-  <li>{{ OneTask['title'] }} - {{ OneTask['description'] }}</li>
-</ul>
-</div>
+<!-- <div id="third-task">
+  <h1>Search Task by ID </h1>
+  <ul>
+    <input type="text" name="" id="" #id>
+    <button class="btn btn-primary" (click)="getOneTasksFromService(id.value)">Show one tasks</button>
+    <li>{{ OneTask['title'] }} - {{ OneTask['description'] }}</li>
+  </ul>
+</div> -->

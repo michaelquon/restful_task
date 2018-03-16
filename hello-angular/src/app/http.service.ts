@@ -6,13 +6,21 @@ export class HttpService {
 
   constructor(private _http: HttpClient){}
     getTasks(){
-      console.log("in service getting all")
       return this._http.get('/tasks');
       }
       getOneTasks(id){
-        console.log("in service getting one")
         return this._http.get('/tasks/'+id)
-
+      }
+      addTask(newtask){
+        return this._http.post('/tasks', newtask)
+      }
+      deleteTask(id){
+        console.log("I've been deleted")
+        return this._http.delete('/tasks/'+id)
+      }
+      editTask(id, updateData){
+        console.log("I've reached Update")
+        return this._http.put('/tasks/'+id, updateData)
       }
     }
 

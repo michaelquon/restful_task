@@ -49,11 +49,13 @@ app.post('/tasks', (req,res)=>{
         else{
             console.log('task added successfully')
             res.redirect('/tasks')
+        
         }
     })
 })
 app.put('/tasks/:id', (req,res)=>{
-    Tasks.update({_id: req.params.id}, req.body,(err)=>{
+    
+    Tasks.update({_id: req.params.id}, req.body, (err)=>{
         if(err){
             console.log(err);
         }
